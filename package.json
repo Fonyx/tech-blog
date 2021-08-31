@@ -1,0 +1,39 @@
+{
+  "name": "tech-blog",
+  "version": "1.0.0",
+  "description": "An authentication enabled tech blog system built with node, express, sequelize and handlbars",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "seed": "node seed/seed.js",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fonyx/tech-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fonyx/tech-blog/issues"
+  },
+  "homepage": "https://github.com/Fonyx/tech-blog#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
+    "express-session": "^1.17.2",
+    "jest": "^27.1.0",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.3.2"
+  }
+}
