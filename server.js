@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // use the controllers
 app.use(controllers);
-// enable the handlebars enginer
+// enable the handlebars engineer
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 // open the public folder up for express public
