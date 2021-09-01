@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest --coverage",
-    "seed": "node seed/seed.js",
+    "seed": "node seeds/index.js",
     "start": "node server.js",
     "watch": "nodemon server.js"
   },

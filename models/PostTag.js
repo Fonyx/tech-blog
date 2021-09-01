@@ -10,7 +10,7 @@ PostTag.init({
         allowNull: false,
         primaryKey: true,
     },
-    product_id: {
+    post_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {

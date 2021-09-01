@@ -36,15 +36,15 @@ User.init(
   },
   {
     hooks: {
-      beforeCreate: (newData) => {
+      beforeCreate: async (newData) => {
         // TODO: This may need to be async awaited but linter doesn't like the async arrow function syntax
         // override the password in the newData packet with a hashed version
-        newData.password = bcrypt.hash(newData.password, bcrypt.genSaltSync(8));
+        newData.password = await bcrypt.hash(newData.password, bcrypt.genSaltSync(8));
         // newData.password = await bcrypt.hash(newData.password, 10)
         return newData;
       },
-      beforeUpdate: (updatedData) => {
-        updatedData.password = bcrypt.hash(
+      beforeUpdate: async (updatedData) => {
+        updatedData.password = await bcrypt.hash(
           updatedData.password,
           bcrypt.genSaltSync(8)
         );

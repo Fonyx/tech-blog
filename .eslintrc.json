@@ -32,5 +32,6 @@
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "radix": "off"
-  }
+  },
+  "parser": "@babel/eslint-parser"
 }
