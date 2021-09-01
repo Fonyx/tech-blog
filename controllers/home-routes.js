@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   try {
     // Get all posts, sorted by title
     const postData = await Post.findAll({
-      include: ['owner', 'post comment'],
+      include: ['owner', 'comments'],
       order: [['title', 'ASC']],
     });
 
@@ -31,7 +31,7 @@ router.get('/login', (req, res) => {
       res.render('login');
     }
   } catch(err){
-
+    res.status(500).json(err);
   }
 })
 
