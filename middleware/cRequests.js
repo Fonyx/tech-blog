@@ -7,6 +7,7 @@ const clog = require('../utils/cLogger');
  * @param {*} next
  */
 const cRequests = (req, res, next) => {
+  // https://unicode.org/emoji/charts/full-emoji-list.html?utm_source=thenewstack&utm_medium=website&utm_campaign=platform#1f932  
   const openHands = String.fromCodePoint(0x1f932);
   const handWriting = String.fromCodePoint(0x270d);
   const pointing = String.fromCodePoint(0x1f446);
