@@ -1,0 +1,24 @@
+localhost:3001/
+
+    / [routes that call render]
+        -get: get all posts sorted by title: renders 'homepage' with posts
+    api/ [controller routes that don't call render, they return json and other side effects]
+        user/
+            -post: create new user: returns user data json
+
+            login/
+                -post: authenticate user: returns user data and login message
+            
+            logout/
+                -post: sign out user and delete session: returns empty 204 response
+        
+        
+-------------------------------------------------        
+        
+        post/
+            -post: create new post: return new post json data
+            -get: gets all posts: return all posts with their comments and tags
+            post/:id
+                -get: returns individual post json data
+                -put: update individual post and return updated data
+                -delete: remove individual post

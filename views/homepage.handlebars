@@ -1,1 +1,11 @@
 <h3>Some hardcoded homepage template text</h3>
+
+{{#each posts as |post|}}
+<h2>{{post.owner.username}}</h2>
+<h3>{{post.title}}</h3>
+<p>{{post.content}}</p>
+{{#each post.comment as |tag|}}
+<p>{{tag.tag_name}}</p>
+{{/each}}
+<p></p>
+{{/each}}

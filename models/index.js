@@ -5,27 +5,37 @@ const Tag = require('./Tag');
 const PostTag = require('./PostTag');
 
 User.hasMany(Post, {
-  foreignKey: 'id',
-  as: 'User Post',
+  foreignKey: 'user_id',
+  as: 'posts',
 });
+
+Post.belongsTo(User,{
+  foreignKey: 'user_id',
+  as: 'owner'
+})
 
 Post.hasMany(Comment, {
   foreignKey: 'id',
-  as: 'Post Comment',
+  as: 'comments',
 });
+
+Comment.belongsTo(Post, {
+  foreignKey: "post_id",
+  as: "post"
+})
 
 Post.belongsToMany(Tag, {
   through: {
     model: PostTag,
   },
-  as: 'Post Tags',
+  as: 'tags',
 });
 
 Tag.belongsToMany(Post, {
   through: {
     model: PostTag,
   },
-  as: 'Tag Posts',
+  as: 'posts',
 });
 
 module.exports = {
