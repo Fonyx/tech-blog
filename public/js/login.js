@@ -1,5 +1,3 @@
-const clog = require('../../utils/cLogger');
-
 const loginFormHandler = async (event) => {
     event.preventDefault();
 
@@ -11,21 +9,21 @@ const loginFormHandler = async (event) => {
 
         // consume the login endpoint with a post request
         const response = await fetch('/api/user/login', {
-            type: 'POST',
+            method: 'POST',
             body: JSON.stringify({email, password}),
             headers: {'Content-Type':'application/json'}
         });
 
         if(response.ok){
-            clog('User successfully logged in', 'green');
+            console.log('User successfully logged in');
             document.location.replace('/profile');
         } else {
-            clog('User failed to login with known credentials', 'red');
+            console.log('User failed to login with known credentials');
             alert(response.statusText);
         }
 
     } else {
-        clog('User did not submit values for email and password during login', 'yellow');
+        console.log('User did not submit values for email and password during login');
     }
 }
 
@@ -41,21 +39,21 @@ const signupFormHandler = async (event) => {
 
         // consume the login endpoint with a post request
         const response = await fetch('/api/user/', {
-            type: 'POST',
+            method: 'POST',
             body: JSON.stringify({username, email, password}),
             headers: {'Content-Type':'application/json'}
         });
 
         if(response.ok){
-            clog('User successfully logged in', 'green');
+            console.log('User successfully logged in');
             document.location.replace('/profile');
         } else {
-            clog('User failed to signup', 'red');
+            console.log('User failed to signup');
             alert(response.statusText);
         }
 
     } else {
-        clog('User did not submit values for username, email and password during login', 'yellow');
+        console.log('User did not submit values for username, email and password during login');
     }
 }
 
