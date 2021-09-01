@@ -45,12 +45,24 @@ function clog(text, colorPref) {
   let colorCode = __getColorCode('black');
   // handle optional parse
   if (colorPref) {
-    colorCode = __getColorCode(colorPref);
+    try{
+      colorCode = __getColorCode(colorPref);
+      console.log(`${colorCode}`);
+      console.log(text);
+      
+    }catch(err){
+      if(err.message === 'Color not available'){
+        // if the user requests an invalid color, log that using red
+        colorCode = __getColorCode('red');
+        console.log(`${colorCode}`);
+        console.log(text, `Color '${colorPref}' unavailable, choose from ${colorNames}`);
+      }
+    }
+    // reset the console color to black
+    let blackCode = __getColorCode('black');
+      console.log(`${blackCode}`);
   }
-  console.log(`${colorCode}`);
-  console.log(text);
-  let blackCode = __getColorCode('black');
-  console.log(`${blackCode}`);
+  
 }
 
 module.exports = clog;
