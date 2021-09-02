@@ -1,21 +1,21 @@
-<h1>Home page</h1>
-<h2>User logged in is: {{logged_in}}</h2>
-{{#if logged_in}}
-    <nav>
-      <button class="btn" id="logout">logout</button>
-    </nav>
-{{else}}
-    <nav>
-      <a href="/login" id="login-redirect">login</a>
-    </nav>
-    <nav>
-      <a href="/signup" id="signup-redirect">signup</a>
-    </nav>
-{{/if}}
-{{#each posts as |post|}}
-  {{> post-detail}}
-{{#each post.comment as |tag|}}
-  {{> tag-detail}}
-{{/each}}
-<p></p>
-{{/each}}
+<header>
+  <h1>Home</h1>
+  {{#if logged_in}}
+      <nav>
+        <button class="btn" id="logout">logout</button>
+      </nav>
+  {{else}}
+      <nav>
+        <a class="btn" href="/login" id="login">login</a>
+        <a class="btn" href="/signup" id="signup">signup</a>
+      </nav>
+  {{/if}}
+</header>
+<main>
+  {{#each posts as |post|}}
+    {{> post-detail}}
+    {{#each post.comment as |tag|}}
+      {{> tag-detail}}
+    {{/each}}
+  {{/each}}
+</main>

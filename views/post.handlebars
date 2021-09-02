@@ -1,14 +1,30 @@
-<h2> User log in is: {{logged_in}}</h2>
-<a href="/{{post.id}}">
-    <h2>{{post.title}}</h2>
-    <p>{{post.content}}</p>
-</a>
-{{!-- {{#if logged_in}}
-    <a href="/post/{{id}}">Update Post</a>
-{{/if}} --}}
-{{#each post.comments as |comment|}}
-    {{> comment-detail}}
-{{/each}}
-{{#each post.tags as |tag|}}
-    {{> tag-detail}}
-{{/each}}
+<header>
+  <h1>Individual Post</h1>
+  {{#if logged_in}}
+      <nav>
+        <button class="btn" id="logout">logout</button>
+      </nav>
+  {{else}}
+      <nav>
+        <a href="/login" id="login-redirect">login</a>
+        <a href="/signup" id="signup-redirect">signup</a>
+      </nav>
+  {{/if}}
+</header>
+<main>
+    <div class="card">
+        <div class="card-title">
+            <h2>{{post.title}}</h2>
+        </div>
+        <div class="card-content">
+            <p>{{post.content}}</p>
+        </div>
+    </div>
+
+    {{#each post.comments as |comment|}}
+        {{> comment-detail}}
+    {{/each}}
+    {{#each post.tags as |tag|}}
+        {{> tag-detail}}
+    {{/each}}
+</main>

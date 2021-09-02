@@ -1,15 +1,18 @@
-<h1>Profile</h1>
-<h2> User log in is: {{logged_in}}</h2>
-<h2> {{posts.[0].owner.username}} Posts</h2>
-{{#each posts as |post|}}
-    {{> post-detail }}
-    {{!-- {{#if post.comments}}
-        <h1>Comments</h1>
-        {{#each post.comments as |comment|}}
-            {{> comment-detail}}
-        {{/each}}
+<header>
+    <h1> {{posts.[0].owner.username}} Posts</h1>
+        {{#if logged_in}}
+        <nav>
+            <button class="btn" id="logout">logout</button>
+        </nav>
+    {{else}}
+        <nav>
+            <a class="btn" href="/login" id="login">login</a>
+            <a class="btn" href="/signup" id="signup">signup</a>
+        </nav>
     {{/if}}
-    {{#each post.tags as |tag|}}
-        {{> tag-detail}}
-    {{/each}} --}}
-{{/each}}
+</header>
+<main>
+    {{#each posts as |post|}}
+        {{> post-detail }}
+    {{/each}}
+</main>
