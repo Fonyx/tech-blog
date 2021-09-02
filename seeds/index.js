@@ -7,6 +7,7 @@ const postTagData = require('./post-tags-data.json');
 const commentData = require('./comment-data.json');
 
 const seedDatabase = async() => {
+    
     await connection.sync({force: true});
 
     await User.bulkCreate(userData, {

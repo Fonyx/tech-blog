@@ -39,17 +39,17 @@ router.get('/login', (req, res) => {
 router.get('/profile', onlyIfLoggedIn, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: ['posts'],
+    const postData = await Post.findAll({
+      where :{user_id: req.session.user_id}
+    }, {
+      include: ['tags'],
     });
 
-    const user = userData.get({ plain: true });
+    const posts = postData.map((postObj)=>{
+      return postObj.get({ plain: true });
+    })
 
-    res.render('profile', {
-      ...user,
-      logged_in: true
-    });
+    res.render('profile', {posts});
   } catch (err) {
     res.status(500).json(err);
   }

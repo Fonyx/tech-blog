@@ -12,7 +12,7 @@ User.hasMany(Post, {
 Post.belongsTo(User,{
   foreignKey: 'user_id',
   as: 'owner'
-})
+});
 
 Post.hasMany(Comment, {
   foreignKey: 'id',

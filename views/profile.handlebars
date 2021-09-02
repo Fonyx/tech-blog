@@ -1,1 +1,10 @@
 <h1>Profile</h1>
+
+<h2> List of Profile Posts</h2>
+{{#each posts as |post|}}
+    <h3>{{post.title}}</h3>
+    <p>{{post.content}}</p>
+    {{#each post.tags as |tag|}}
+        <p>{{tag.tag_name}}</p>
+    {{/each}}
+{{/each}}
