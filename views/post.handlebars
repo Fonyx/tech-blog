@@ -1,12 +1,11 @@
-<h1>Individual Post Page</h1>
 <h2> User log in is: {{logged_in}}</h2>
 <a href="/{{post.id}}">
     <h2>{{post.title}}</h2>
     <p>{{post.content}}</p>
 </a>
-{{#if logged_in}}
+{{!-- {{#if logged_in}}
     <a href="/post/{{id}}">Update Post</a>
-{{/if}}
+{{/if}} --}}
 {{#each post.comments as |comment|}}
     {{> comment-detail}}
 {{/each}}

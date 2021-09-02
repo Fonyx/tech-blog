@@ -1,6 +1,6 @@
 <h1>Profile</h1>
 <h2> User log in is: {{logged_in}}</h2>
-<h2> Your Posts</h2>
+<h2> {{posts.[0].owner.username}} Posts</h2>
 {{#each posts as |post|}}
     {{> post-detail }}
     {{!-- {{#if post.comments}}

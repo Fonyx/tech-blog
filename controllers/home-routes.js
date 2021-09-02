@@ -58,7 +58,7 @@ router.get('/profile', onlyIfLoggedIn, async (req, res) => {
     // Find the logged in user based on the session ID
     const rawPosts = await Post.findAll({
       where :{user_id: req.session.user_id},
-      include: ['tags', 'comments']
+      include: ['tags', 'comments', 'owner']
     });
 
     const posts = rawPosts.map((postObj)=>{

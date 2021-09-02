@@ -13,11 +13,9 @@
     </nav>
 {{/if}}
 {{#each posts as |post|}}
-<h2>{{post.owner.username}}</h2>
-<h3>{{post.title}}</h3>
-<p>{{post.content}}</p>
+  {{> post-detail}}
 {{#each post.comment as |tag|}}
-<p>{{tag.tag_name}}</p>
+  {{> tag-detail}}
 {{/each}}
 <p></p>
 {{/each}}
