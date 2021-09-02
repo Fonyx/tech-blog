@@ -38,6 +38,20 @@ router.get('/login', (req, res) => {
   }
 })
 
+// get signup empty page, renders signup template
+router.get('/signup', (req, res) => {
+  try{
+    if (req.session.logged_in){
+      res.redirect('/profile');
+      return;
+    } else {
+      res.render('signup');
+    }
+  } catch(err){
+    res.status(500).json(err);
+  }
+})
+
 // Use withAuth middleware to prevent access to route
 router.get('/profile', onlyIfLoggedIn, async (req, res) => {
   try {
