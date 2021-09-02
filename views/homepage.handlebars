@@ -1,5 +1,14 @@
-<h3>Some hardcoded homepage template text</h3>
-
+<h1>Home page</h1>
+<h2>User logged in is: {{logged_in}}</h2>
+{{#if logged_in}}
+    <nav>
+      <button class="btn" id="logout">logout</button>
+    </nav>
+{{else}}
+    <nav>
+      <a href="/login" id="login-redirect">login</a>
+    </nav>
+{{/if}}
 {{#each posts as |post|}}
 <h2>{{post.owner.username}}</h2>
 <h3>{{post.title}}</h3>

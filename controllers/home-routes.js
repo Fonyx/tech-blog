@@ -1,6 +1,7 @@
 const { User, Post, Tag } = require('../models');
 const router = require('express').Router();
 const {onlyIfLoggedIn} = require('../middleware/auth');
+const clog = require('../utils/cLogger');
 
 // home route get request
 router.get('/', async (req, res) => {
@@ -14,8 +15,10 @@ router.get('/', async (req, res) => {
     // Serialize user data so templates can read it
     const posts = postData.map((post) => post.get({ plain: true }));
 
+    let session_logged_in = req.session.logged_in? true: false;
+
     // Pass serialized data into Handlebars.js template
-    res.render('homepage', { posts });
+    res.render('homepage', { posts, logged_in: session_logged_in });
   } catch (err) {
     res.status(500).json(err.message);
   }
@@ -39,19 +42,42 @@ router.get('/login', (req, res) => {
 router.get('/profile', onlyIfLoggedIn, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const postData = await Post.findAll({
-      where :{user_id: req.session.user_id}
-    }, {
-      include: ['tags'],
+    const rawPosts = await Post.findAll({
+      where :{user_id: req.session.user_id},
+      include: 'tags',
     });
 
-    const posts = postData.map((postObj)=>{
+    const posts = rawPosts.map((postObj)=>{
       return postObj.get({ plain: true });
     })
 
-    res.render('profile', {posts});
+    res.render('profile', {posts, logged_in: req.session.logged_in});
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+
+router.get('/post/:id', async(req, res) => {
+
+  try{
+    var postObj = await Post.findByPk(req.params.id, {
+      include: ['owner', 'comments', 'tags'],
+      attributes: {
+        exclude: ['password']
+      }
+    })
+
+    if(postObj){
+      var post = postObj.get({plain: true});
+      clog(`Found post: ${post.title}`, 'green');
+      res.render('post',{post, logged_in:req.session.logged_in});
+    } else {
+      res.status(404).json({message:`No post for id:${req.params.id}`})
+    }
+  }
+  catch(err){
+    res.status(500).json(err)
   }
 });
 

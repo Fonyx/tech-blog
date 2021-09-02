@@ -66,6 +66,7 @@ if (req.session.logged_in) {
       res.status(204).end();
     });
 } else {
+  clog('User not logged in, ignoring request', 'yellow')
     res.status(404).end();
 }
 });

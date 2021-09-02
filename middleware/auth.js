@@ -8,7 +8,7 @@ const clog = require('../utils/cLogger');
  */
  const onlyIfLoggedIn = (req, res, next) => {
     // if user isn't logged in, redirect to /login route
-    if(!req.session.loggedIn){
+    if(!req.session.logged_in){
         const redirectEmoji = String.fromCodePoint(0x21AA);
         clog(`${redirectEmoji} Redirecting to login as user not logged in`, 'yellow')
         res.redirect('/login');

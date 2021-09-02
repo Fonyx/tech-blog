@@ -5,10 +5,11 @@ const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const controllers = require('./controllers');
 const connection = require('./config/connection');
-const helpers = require('./utils/hjsHelpers');
 const cRequests = require('./middleware/cRequests');
 
-const hbs = exphbs.create({ helpers });
+var partialsDir = __dirname + '/views/partials';
+
+const hbs = exphbs.create({});
 
 const app = express();
 const PORT = process.env.PORT || 3001;
