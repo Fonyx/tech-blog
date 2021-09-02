@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main</title>
-  {{!-- remove the rel attribute so express can return the right type attribute --}}
   <link rel="stylesheet" type="text/css" href="/css/reset.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +13,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+  {{!-- remove the rel attribute so express can return the right type attribute --}}
   <link type="text/css" href="/css/styles.css">
 </head>
 
@@ -50,7 +50,7 @@
     <script src="/js/logout.js"></script>
   {{/if}}
   <!--JavaScript at end of body for optimized loading-->
-  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
 </body>
 
 </html>
