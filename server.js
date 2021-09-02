@@ -16,7 +16,9 @@ const PORT = process.env.PORT || 3001;
 
 const sessionTemplate = {
   secret: 'Super secret secret',
-  cookie: {},
+  cookie: {
+    sameSite: "strict",
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
