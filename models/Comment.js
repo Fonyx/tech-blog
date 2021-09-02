@@ -21,6 +21,11 @@ Comment.init(
                 model:"post",
                 key: "id"
             }
+        },
+        created: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
         }
     },
     {

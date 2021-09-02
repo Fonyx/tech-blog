@@ -1,0 +1,13 @@
+<h1>Individual Post Page</h1>
+<h2> User log in is: {{logged_in}}</h2>
+{{post.title}}
+{{post.content}}
+{{#if logged_in}}
+    <button>Update This Post</button>
+{{/if}}
+{{#each post.comments as |comment|}}
+    {{> comment-detail}}
+{{/each}}
+{{#each post.tags as |tag|}}
+    {{> tag-detail}}
+{{/each}}

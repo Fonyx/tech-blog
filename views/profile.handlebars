@@ -3,7 +3,13 @@
 <h2> List of Profile Posts</h2>
 {{#each posts as |post|}}
     {{> post-detail }}
+    {{!-- {{#if post.comments}}
+        <h1>Comments</h1>
+        {{#each post.comments as |comment|}}
+            {{> comment-detail}}
+        {{/each}}
+    {{/if}}
     {{#each post.tags as |tag|}}
         {{> tag-detail}}
-    {{/each}}
+    {{/each}} --}}
 {{/each}}
