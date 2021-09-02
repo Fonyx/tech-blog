@@ -24,6 +24,28 @@ router.get('/', async (req, res) => {
   }
 });
 
+// tag route get all posts for a tag
+router.get('/tag/:tag_name', async (req, res) => {
+  try {
+    // Get all posts, sorted by title
+    const rawTag = await Tag.findOne({
+      where: {tag_name: req.params.tag_name},
+      include: [{nested: true, all: true}],
+      order: [['tag_name', 'ASC']],
+    });
+
+    // Serialize user data so templates can read it
+    const tag = rawTag.get({ plain: true });
+
+    let session_logged_in = req.session.logged_in? true: false;
+
+    // Pass serialized data into Handlebars.js template
+    res.render('tag', { layout:'main', tag, logged_in: session_logged_in });
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+});
+
 // get login empty page, renders login template
 router.get('/login', (req, res) => {
   try{
@@ -76,7 +98,8 @@ router.get('/post/:id', async(req, res) => {
 
   try{
     var postObj = await Post.findByPk(req.params.id, {
-      include: ['owner', 'comments', 'tags'],
+      // include: ['owner', 'comments', 'tags'],
+      include: [{nested: true, all: true}],
       attributes: {
         exclude: ['password']
       }

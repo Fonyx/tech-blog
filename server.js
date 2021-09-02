@@ -6,10 +6,10 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const controllers = require('./controllers');
 const connection = require('./config/connection');
 const cRequests = require('./middleware/cRequests');
-
+const helpers = require('./utils/hjsHelpers');
 var partialsDir = __dirname + '/views/partials';
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 
 const app = express();
 const PORT = process.env.PORT || 3001;

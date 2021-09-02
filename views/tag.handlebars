@@ -1,0 +1,21 @@
+<header>
+  <h1>Posts Tagged with {{tag.tag_name}}</h1>
+  {{#if logged_in}}
+      <nav>
+        <button class="btn" id="logout">logout</button>
+      </nav>
+  {{else}}
+      <nav>
+        <a class="btn" href="/login" id="login">login</a>
+        <a class="btn" href="/signup" id="signup">signup</a>
+      </nav>
+  {{/if}}
+</header>
+<main>
+  {{#each tag.posts as |post|}}
+    {{> post-detail}}
+    {{#each post.comment as |tag|}}
+      {{> comment-detail}}
+    {{/each}}
+  {{/each}}
+</main>
