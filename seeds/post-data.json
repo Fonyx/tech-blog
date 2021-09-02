@@ -2,16 +2,31 @@
     {
         "title":"Full Stack Woes",
         "content":"A lot of test text here that looks real",
-        "user_id":"1"
+        "user_id":1
     },
     {
         "title":"A graphic design post",
         "content":"Some content about css",
-        "user_id":"2"
+        "user_id":2
     },
     {
         "title":"A cyber security post",
         "content":"Something you should know about sql injection",
-        "user_id":"3"
+        "user_id":3
+    },
+    {
+        "title":"Node developement",
+        "content":"How to build a server",
+        "user_id":1
+    },
+    {
+        "title":"CSS Animation",
+        "content":"Do more with less",
+        "user_id":2
+    },
+    {
+        "title":"Middleware",
+        "content":"Not Front End, Not Back End",
+        "user_id":3
     }
 ]

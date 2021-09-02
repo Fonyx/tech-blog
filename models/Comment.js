@@ -12,7 +12,7 @@ Comment.init(
             primaryKey: true,
         },
         content: {
-            type: DataTypes.STRING(30),
+            type: DataTypes.STRING(255),
             allowNull: false,
         },
         post_id: {
@@ -21,6 +21,13 @@ Comment.init(
                 model:"post",
                 key: "id"
             }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            }  
         },
         created: {
             type: DataTypes.DATE,

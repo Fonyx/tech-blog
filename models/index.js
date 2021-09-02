@@ -24,6 +24,11 @@ Comment.belongsTo(Post, {
   as: "post"
 })
 
+Comment.belongsTo(User, {
+  foreignKey: 'user_id',
+  as: "commenter"
+})
+
 Post.belongsToMany(Tag, {
   through: {
     model: PostTag,

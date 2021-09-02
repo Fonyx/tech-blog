@@ -1,14 +1,32 @@
 [
     {
         "content":"I love full stack",
-        "post_id":1
+        "post_id":1,
+        "user_id":2
     },
     {
         "content":"Cool graphic design bro",
-        "post_id":2
+        "post_id":2,
+        "user_id":3
     },
     {
         "content":"Toight security bruz!",
-        "post_id":3
+        "post_id":3,
+        "user_id":1
+    },
+    {
+        "content":"Some other comment",
+        "post_id":1,
+        "user_id":2
+    },
+    {
+        "content":"I hate this post",
+        "post_id":2,
+        "user_id":3
+    },
+    {
+        "content":"Are you trying to start a flame war!?",
+        "post_id":3,
+        "user_id":1
     }
 ]

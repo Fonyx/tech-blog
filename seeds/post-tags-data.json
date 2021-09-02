@@ -18,5 +18,9 @@
     {
       "post_id": 3,
       "tag_id": 5
+    },
+    {
+      "post_id": 3,
+      "tag_id": 4
     }
 ]
