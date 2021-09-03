@@ -144,7 +144,7 @@ router.get('/post/update/:id', async(req, res) => {
     if(postObj){
       var post = postObj.get({plain: true});
       clog(`Found post: ${post.title}`, 'green');
-      res.render('create-post',{post, logged_in:req.session.logged_in});
+      res.render('update-post',{post, logged_in:req.session.logged_in});
     } else {
       res.status(404).json({message:`No post for id:${req.params.id}`})
     }

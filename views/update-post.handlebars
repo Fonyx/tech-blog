@@ -13,24 +13,22 @@
 </header>
 <main>
     <div class="col-md-6">
-
-        <h2>New Post</h2>
-
-        <form class="form create-post-form">
+        <h2>Update Post</h2>
+        <form class="form update-post-form">
             <div class="form-group">
-                <label for="title-create-post">Title</label>
-                <input class="form-input" type="text" id="title-create-post"/>
+                <label for="title-update-post">Title</label>
+                <input class="form-input" type="text" id="title-update-post" data-id="{{post.id}}" value="{{post.title}}"/>
             </div>
             <div class="form-group">
-                <label for="content-create-post">Content</label>
-                <input class="form-input" type="text" id="content-create-post" value="{{post.content}}"/>
+                <label for="content-update-post">Content</label>
+                <input class="form-input" type="text" id="content-update-post" value="{{post.content}}"/>
             </div>
             <div class="form-group">
-                <label for="tags-create-post">Tags</label>
-                <input class="form-input" type="text" id="tags-create-post" placeholder="string delimited text for tags"/>
+                <label for="tags-update-post">Tags</label>
+                <input class="form-input" type="text" id="tags-update-post" value="{{stringify post.tags}}"/>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary" type="submit">Post</button>
+                <button class="btn btn-primary" type="submit">Update</button>
             </div>
             <div class="form-group">
                 <a href="/" class="btn btn-primary">Cancel</a>
@@ -38,5 +36,5 @@
         </form>
     </div>
 
-  <script src="/js/create-post.js"></script>
+  <script src="/js/update-post.js"></script>
 </main>
