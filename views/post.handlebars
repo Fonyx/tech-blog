@@ -2,7 +2,8 @@
   <h1>Individual Post</h1>
   {{#if logged_in}}
       <nav>
-        <button class="btn" id="logout">logout</button>
+        <a class="btn" id="logout">logout</a>
+        <a class="btn" href="/post/update/{{post.id}}" id="update-post-redirect">update</a>
       </nav>
   {{else}}
       <nav>
@@ -13,6 +14,7 @@
 </header>
 <main>
     <div class="card">
+        <h3>{{post.owner.username}}</h3>
         <div class="card-title">
             <h2>{{post.title}}</h2>
         </div>

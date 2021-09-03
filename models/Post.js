@@ -16,9 +16,9 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false,
             // only allow characters for title
-            validate: {
-                isAlpha: true,
-            },
+            // validate: {
+            //     is: true,
+            // },
         },
         content: {
             type: DataTypes.STRING,

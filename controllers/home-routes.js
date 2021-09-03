@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   try {
     // Get all posts, sorted by title
     const postData = await Post.findAll({
-      include: ['owner', 'comments'],
+      include: ['owner', 'comments', 'tags'],
       order: [['title', 'ASC']],
     });
 
@@ -93,7 +93,17 @@ router.get('/profile', onlyIfLoggedIn, async (req, res) => {
   }
 });
 
+// render create post form view
+router.get('/profile/post', onlyIfLoggedIn, async(req, res) => {
+  try{
+      res.render('create-post');  
+  }
+  catch(err){
+    res.status(500).json(err)
+  }
+});
 
+// get a specific post - render post view
 router.get('/post/:id', async(req, res) => {
 
   try{
@@ -109,6 +119,32 @@ router.get('/post/:id', async(req, res) => {
       var post = postObj.get({plain: true});
       clog(`Found post: ${post.title}`, 'green');
       res.render('post',{post, logged_in:req.session.logged_in});
+    } else {
+      res.status(404).json({message:`No post for id:${req.params.id}`})
+    }
+  }
+  catch(err){
+    res.status(500).json(err)
+  }
+});
+
+
+// get a specific post to update - render post view
+router.get('/post/update/:id', async(req, res) => {
+
+  try{
+    var postObj = await Post.findByPk(req.params.id, {
+      // include: ['owner', 'comments', 'tags'],
+      include: [{nested: true, all: true}],
+      attributes: {
+        exclude: ['password']
+      }
+    })
+
+    if(postObj){
+      var post = postObj.get({plain: true});
+      clog(`Found post: ${post.title}`, 'green');
+      res.render('create-post',{post, logged_in:req.session.logged_in});
     } else {
       res.status(404).json({message:`No post for id:${req.params.id}`})
     }

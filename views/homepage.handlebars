@@ -2,6 +2,7 @@
   <h1>Home</h1>
   {{#if logged_in}}
       <nav>
+        <a class="btn" href="/profile" id="profile-link">Profile</a>
         <button class="btn" id="logout">logout</button>
       </nav>
   {{else}}
@@ -14,7 +15,7 @@
 <main>
   {{#each posts as |post|}}
     {{> post-detail}}
-    {{#each post.comment as |tag|}}
+    {{#each post.tags as |tag|}}
       {{> tag-detail}}
     {{/each}}
   {{/each}}

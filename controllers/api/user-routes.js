@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
       console.log(err);
       res.status(500).json(err);
     }
-  });
+});
   
 // Login
 router.post('/login', async (req, res) => {

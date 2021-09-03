@@ -1,18 +1,27 @@
 <header>
+    {{!-- since all the posts are by the owner, just grab the first one --}}
     <h1> {{posts.[0].owner.username}} Posts</h1>
-        {{#if logged_in}}
-        <nav>
-            <button class="btn" id="logout">logout</button>
-        </nav>
-    {{else}}
-        <nav>
-            <a class="btn" href="/login" id="login">login</a>
-            <a class="btn" href="/signup" id="signup">signup</a>
-        </nav>
-    {{/if}}
+    <nav>
+        <a class="btn" id="logout">logout</a>
+        <a class="btn" href="/profile/post">create</a>
+        <a class="btn" href="/">home</a>
+    </nav>
+
 </header>
 <main>
     {{#each posts as |post|}}
-        {{> post-detail }}
+    <div class="card">
+        <div class="card-title">
+            {{> post-detail }}
+        </div>
+        <div class="card-content">
+
+        </div>
+        <div class="card-footer">
+            {{#each post.tags as |tag|}}
+                {{> tag-detail}}
+            {{/each}}
+        </div>
+    </div>
     {{/each}}
 </main>
