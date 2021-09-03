@@ -23,7 +23,6 @@ async function makePostTagBulkCreatePackage(tagObjs, postObj){
 // route for a new post
 router.post('/', onlyIfLoggedIn, async (req, res) => {
     try{
-
         const postObj = await Post.create({
             title: req.body.title,
             content: req.body.content,
@@ -71,8 +70,8 @@ router.put('/:id', onlyIfLoggedIn, async (req, res) => {
         // prepare the tags with tag_name label
         let prepped_tags = await makeTagBulkCreatePackage(req.body.tag_list);
         let tagObjs = await Tag.bulkCreate(prepped_tags, {
-            // ignoreDuplicates: true,
-            updateOnDuplicate: ['name'],
+            ignoreDuplicates: true,
+            // updateOnDuplicate: ['name'],
             // apply hooks to all elements in bulk
             individualHooks: true,
             returning: true
@@ -98,6 +97,11 @@ router.put('/:id', onlyIfLoggedIn, async (req, res) => {
         clog(err, 'red');
         res.status(500).json(err);
     }
+})
+
+// route for adding a comment to a post
+router.post('/comment/:id', onlyIfLoggedIn, async (req, res) => {
+
 })
 
 

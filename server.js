@@ -18,6 +18,8 @@ const sessionTemplate = {
   secret: 'Super secret secret',
   cookie: {
     sameSite: "strict",
+    // 5 minute session timeout
+    expires: 1000 * 60 * 5
   },
   resave: false,
   saveUninitialized: true,

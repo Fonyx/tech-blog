@@ -53,6 +53,7 @@ Tag.init(
             type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
+            unique: true,
             validate: {
                 'caller': (text) => {
                     validators.stringSpacesNoNumbers(text);

@@ -21,7 +21,7 @@ Post.init(
             // },
         },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
             // make sure user doesn't enter SQL sensitive characters, whatever they are
             // validate: {
