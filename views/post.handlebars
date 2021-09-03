@@ -1,16 +1,15 @@
 <header>
   <h1>Individual Post</h1>
-  {{#if logged_in}}
-      <nav>
+  <nav>
+    {{#if logged_in}}
         <a class="btn" id="logout">logout</a>
         <a class="btn" href="/post/update/{{post.id}}" id="update-post-redirect">update</a>
-      </nav>
-  {{else}}
-      <nav>
+    {{else}}
         <a class="btn" href="/login" id="login-redirect">login</a>
         <a class="btn" href="/signup" id="signup-redirect">signup</a>
-      </nav>
-  {{/if}}
+    {{/if}}
+        <a class="btn" href="/">home</a>
+  </nav>
 </header>
 <main>
     <div class="card">

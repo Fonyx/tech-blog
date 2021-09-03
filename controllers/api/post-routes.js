@@ -33,6 +33,8 @@ router.post('/', onlyIfLoggedIn, async (req, res) => {
         let prepped_tags = await makeTagBulkCreatePackage(req.body.tag_list);
         let tagObjs = await Tag.bulkCreate(prepped_tags, {
             ignoreDuplicates: true,
+            individualHooks: true,
+            returning: true
         });
         // delete all current postTags for a post before creating new ones
         await PostTag.destroy({where: {

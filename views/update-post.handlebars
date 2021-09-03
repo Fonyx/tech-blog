@@ -25,13 +25,16 @@
             </div>
             <div class="form-group">
                 <label for="tags-update-post">Tags</label>
-                <input class="form-input" type="text" id="tags-update-post" value="{{stringify post.tags}}"/>
+                <input class="form-input" type="text" id="tags-update-post" placeholder="Comma separated text for tags" value="{{stringify post.tags}}"/>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Update</button>
             </div>
             <div class="form-group">
                 <a href="/" class="btn btn-primary">Cancel</a>
+            </div>
+            <div class="form-group">
+                <a href="/api/post/delete/{{post.id}}" class="btn btn-primary red">Delete</a>
             </div>
         </form>
     </div>
