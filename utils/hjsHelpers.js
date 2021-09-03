@@ -8,14 +8,16 @@ module.exports = {
     },
     stringify: (tags) => {
         let stringTag = '';
-        tags.forEach((tag, index, array) =>{
-            console.log(tag.tag_name);
-            stringTag += tag.tag_name;
-            if(index !== array.length -1){
-                stringTag += ', '
-            }
-        });
-        console.log(stringTag);
+        if(tags){
+            tags.forEach((tag, index, array) =>{
+                console.log(tag.tag_name);
+                stringTag += tag.tag_name;
+                if(index !== array.length -1){
+                    stringTag += ', '
+                }
+            });
+            console.log(stringTag);
+        }
         return stringTag;
     }
 };
