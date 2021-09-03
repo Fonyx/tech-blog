@@ -4,8 +4,8 @@ const clog = require('../../utils/cLogger');
 const {onlyIfLoggedIn} = require('../../middleware/auth');
 
 async function makeTagBulkCreatePackage(tag_list) {
-    var tags = tag_list.map((tag_name) => {
-        return {"tag_name": tag_name};
+    var tags = tag_list.map((name) => {
+        return {"name": name};
     })
     return tags;
 }
@@ -14,7 +14,7 @@ async function makePostTagBulkCreatePackage(tagObjs, postObj){
     let post_tags = tagObjs.map((tag) => {
         return {
             post_id: postObj.id,
-            tag_id: tag.id
+            tag_name: tag.name
         }
     });
     return post_tags;
@@ -69,7 +69,11 @@ router.put('/:id', onlyIfLoggedIn, async (req, res) => {
         // prepare the tags with tag_name label
         let prepped_tags = await makeTagBulkCreatePackage(req.body.tag_list);
         let tagObjs = await Tag.bulkCreate(prepped_tags, {
-            ignoreDuplicates: true,
+            // ignoreDuplicates: true,
+            updateOnDuplicate: ['name'],
+            // apply hooks to all elements in bulk
+            individualHooks: true,
+            returning: true
         });
         // delete all current postTags for a post before creating new ones
         await PostTag.destroy({where: {

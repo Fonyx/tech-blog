@@ -18,12 +18,12 @@ PostTag.init({
             key: 'id',
         }
     },
-    tag_id: {
-        type: DataTypes.INTEGER,
+    tag_name: {
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: 'tag',
-            key: 'id',
+            key: 'name',
         }
     }
 },

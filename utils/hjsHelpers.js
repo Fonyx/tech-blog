@@ -10,8 +10,8 @@ module.exports = {
         let stringTag = '';
         if(tags){
             tags.forEach((tag, index, array) =>{
-                console.log(tag.tag_name);
-                stringTag += tag.tag_name;
+                console.log(tag.name);
+                stringTag += tag.name;
                 if(index !== array.length -1){
                     stringTag += ', '
                 }

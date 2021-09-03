@@ -1,17 +1,17 @@
 [
     {
-      "tag_name": "stack"
+      "name": "stack"
     },
     {
-      "tag_name": "front end"
+      "name": "front end"
     },
     {
-      "tag_name": "graphic design"
+      "name": "graphic design"
     },
     {
-      "tag_name": "node"
+      "name": "node"
     },
     {
-      "tag_name": "database"
+      "name": "database"
     }
 ]

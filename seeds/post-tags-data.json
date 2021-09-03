@@ -1,26 +1,26 @@
 [
     {
       "post_id": 1,
-      "tag_id": 1
+      "tag_name": "stack"
     },
     {
       "post_id": 1,
-      "tag_id": 4
+      "tag_name": "front end"
     },
     {
       "post_id": 2,
-      "tag_id": 2
+      "tag_name": "graphic design"
     },
     {
       "post_id": 2,
-      "tag_id": 3
+      "tag_name": "node"
     },
     {
       "post_id": 3,
-      "tag_id": 5
+      "tag_name": "node"
     },
     {
       "post_id": 3,
-      "tag_id": 4
+      "tag_name": "database"
     }
 ]

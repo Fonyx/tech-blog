@@ -49,14 +49,10 @@ class Tag extends Model {
 
 Tag.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+        name: {
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
-        },
-        tag_name: {
-            type: DataTypes.STRING(30),
             validate: {
                 'caller': (text) => {
                     validators.stringSpacesNoNumbers(text);
