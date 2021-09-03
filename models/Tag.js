@@ -72,14 +72,30 @@ Tag.init(
             type: DataTypes.ENUM,
             values: modifiers,
             allowNull: false,
+        },
+        materialize_text_color:{
+            type: DataTypes.ENUM,
+            values: ['white', 'black'],
+            allowNull: false,
         }
     },{
     hooks:{
         beforeCreate: (tag) => {
-            let randomColor = generateRandomIntFromRange(0, colors.length-1);
-            let randomModifier = generateRandomIntFromRange(0, colors.length-1);
-            tag.materialize_color = colors[randomColor];
-            tag.materialize_modifier = modifiers[randomModifier];
+            let randomColorIndex = generateRandomIntFromRange(0, colors.length-1);
+            let randomModifierIndex = generateRandomIntFromRange(0, modifiers.length-1);
+            let materializeText = 'black'
+
+            let randomColor = colors[randomColorIndex];
+            let randomModifier = modifiers[randomModifierIndex];
+
+            tag.materialize_color = randomColor;
+            tag.materialize_modifier = randomModifier;
+
+            // if the modifier is darken, set the text to white, otherwise leave it black for lighten and accent
+            if(randomModifier[0] === 'd'){
+                materializeText = 'white';
+            }
+            tag.materialize_text_color = materializeText;
         }
     },
     sequelize: connection,
