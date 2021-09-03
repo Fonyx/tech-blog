@@ -119,7 +119,11 @@ router.get('/post/:id', async(req, res) => {
     if(postObj){
       var post = postObj.get({plain: true});
       clog(`Found post: ${post.title}`, 'green');
-      res.render('post',{post, logged_in:req.session.logged_in});
+      res.render('post',{
+        post, 
+        logged_in:req.session.logged_in,
+        user_is_owner: req.session.user_id === postObj.owner.id? true: false,
+      });
     } else {
       res.status(404).json({message:`No post for id:${req.params.id}`})
     }

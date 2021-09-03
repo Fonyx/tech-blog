@@ -3,7 +3,9 @@
   <nav>
     {{#if logged_in}}
         <a class="btn" id="logout">logout</a>
-        <a class="btn" href="/post/update/{{post.id}}" id="update-post-redirect">update</a>
+        {{#if user_is_owner}}
+            <a class="btn" href="/post/update/{{post.id}}" id="update-post-redirect">update</a>
+        {{/if}}
     {{else}}
         <a class="btn" href="/login" id="login-redirect">login</a>
         <a class="btn" href="/signup" id="signup-redirect">signup</a>
