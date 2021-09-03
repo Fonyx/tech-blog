@@ -25,13 +25,14 @@ router.get('/', async (req, res) => {
 });
 
 // tag route get all posts for a tag
-router.get('/tag/:tag_name', async (req, res) => {
+router.get('/tag/:name', async (req, res) => {
   try {
+    let spaceName = req.params.name.replace(/-+/g, ' ');
     // Get all posts, sorted by title
     const rawTag = await Tag.findOne({
-      where: {tag_name: req.params.tag_name},
+      where: {name: spaceName},
       include: [{nested: true, all: true}],
-      order: [['tag_name', 'ASC']],
+      order: [['name', 'ASC']],
     });
 
     // Serialize user data so templates can read it

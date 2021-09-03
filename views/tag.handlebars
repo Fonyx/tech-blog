@@ -1,5 +1,7 @@
-<header class="">
-  <h1>Posts Tagged with {{tag.tag_name}}</h1>
+<header>
+  <h1>
+    Posts Tagged with {{tag.name}}
+  </h1>
   {{#if logged_in}}
       <nav>
         <button class="btn" id="logout">logout</button>
@@ -14,7 +16,7 @@
 <main>
   {{#each tag.posts as |post|}}
     {{> post-detail}}
-    {{#each post.comment as |tag|}}
+    {{#each post.comments as |comment|}}
       {{> comment-detail}}
     {{/each}}
   {{/each}}

@@ -19,5 +19,8 @@ module.exports = {
             console.log(stringTag);
         }
         return stringTag;
+    },
+    parameterize: (text) => {
+        return text.replace(/\s+/g, '-').toLowerCase();
     }
 };
