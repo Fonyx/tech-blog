@@ -120,5 +120,18 @@ router.post('/comment', onlyIfLoggedIn, async (req, res) => {
     }
 })
 
+// route for deleting a post
+router.delete('/delete', async(req, res) => {
+    try{
+        let postObj = await Post.findByPk(req.body.post_id);
+        await postObj.destroy();
+        clog('Successfully deleted post', 'red');
+        res.render('profile');
+    }catch(err){
+        clog(err, 'red');
+        res.status(500).json(err);
+    }
+});
+
 
 module.exports = router;

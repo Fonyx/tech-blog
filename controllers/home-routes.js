@@ -171,4 +171,16 @@ router.get('/post/:id/comment/', onlyIfLoggedIn, async(req, res) => {
   }
 });
 
+// route for deleting a post
+router.get('/post/update/delete/:id', async(req, res) => {
+  try{
+      let postObj = await Post.findByPk(req.params.id);
+      let post = postObj.get();
+      res.render('confirm-delete', post);
+  }catch(err){
+      clog(err, 'red');
+      res.status(500).json(err);
+  }
+});
+
 module.exports = router;
