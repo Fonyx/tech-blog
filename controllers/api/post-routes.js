@@ -101,7 +101,12 @@ router.put('/:id', onlyIfLoggedIn, async (req, res) => {
 
 // route for adding a comment to a post
 router.post('/comment/:id', onlyIfLoggedIn, async (req, res) => {
-
+    try{
+        
+    }catch(err){
+        clog('Failed to add comment to post', 'red');
+        res.status(500).json({message:"Failed to add comment to post"})
+    }
 })
 
 

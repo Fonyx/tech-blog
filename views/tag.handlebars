@@ -2,16 +2,16 @@
   <h1>
     Posts Tagged with {{tag.name}}
   </h1>
-  {{#if logged_in}}
       <nav>
-        <button class="btn" id="logout">logout</button>
+        {{#if logged_in}}
+              <button class="btn" id="logout">logout</button>
+              <a class="btn" href="/post/comment/{{post.id}}">Add Comment</a>
+        {{else}}
+              <a class="btn" href="/login" id="login">login</a>
+              <a class="btn" href="/signup" id="signup">signup</a>
+        {{/if}}
+        <a class="btn" href="/">home</a>
       </nav>
-  {{else}}
-      <nav>
-        <a class="btn" href="/login" id="login">login</a>
-        <a class="btn" href="/signup" id="signup">signup</a>
-      </nav>
-  {{/if}}
 </header>
 <main>
   {{#each tag.posts as |post|}}

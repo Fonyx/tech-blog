@@ -159,4 +159,16 @@ router.get('/post/update/:id', async(req, res) => {
   }
 });
 
+// get the create comment form
+router.get('/post/:id/comment/', onlyIfLoggedIn, async(req, res) => {
+  try{
+    let rawPost = await Post.findByPk(req.params.id);
+    var postObj = rawPost.get();
+    res.render('create-comment', {post: postObj});  
+  }
+  catch(err){
+    res.status(500).json(err)
+  }
+});
+
 module.exports = router;
