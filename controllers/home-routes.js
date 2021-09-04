@@ -1,6 +1,6 @@
 const { User, Post, Tag } = require('../models');
 const router = require('express').Router();
-const {onlyIfLoggedIn} = require('../middleware/auth');
+const {onlyIfLoggedIn, homeRedirectOnSessionOut} = require('../middleware/auth');
 const clog = require('../utils/cLogger');
 
 // home route get request
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     let session_logged_in = req.session.logged_in? true: false;
 
     // Pass serialized data into Handlebars.js template
-    res.render('homepage', { layout:'main', posts, logged_in: session_logged_in });
+    res.render('home', { layout:'main', posts, logged_in: session_logged_in });
   } catch (err) {
     res.status(500).json(err.message);
   }

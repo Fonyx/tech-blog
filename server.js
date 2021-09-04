@@ -7,7 +7,6 @@ const controllers = require('./controllers');
 const connection = require('./config/connection');
 const cRequests = require('./middleware/cRequests');
 const helpers = require('./utils/hjsHelpers');
-var partialsDir = __dirname + '/views/partials';
 
 const hbs = exphbs.create({ helpers });
 
@@ -20,6 +19,9 @@ const sessionTemplate = {
     sameSite: "strict",
     // 5 minute session timeout
     expires: 1000 * 60 * 5
+
+    // 10 seconds
+    // expires: 1000 * 10
   },
   resave: false,
   saveUninitialized: true,

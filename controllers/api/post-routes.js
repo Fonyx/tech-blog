@@ -1,7 +1,7 @@
 const { Post, Tag, PostTag } = require('../../models');
 const router = require('express').Router();
 const clog = require('../../utils/cLogger');
-const {onlyIfLoggedIn} = require('../../middleware/auth');
+const {onlyIfLoggedIn, homeRedirectOnSessionOut} = require('../../middleware/auth');
 
 async function makeTagBulkCreatePackage(tag_list) {
     var tags = tag_list.map((name) => {
