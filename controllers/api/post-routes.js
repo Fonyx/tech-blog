@@ -3,11 +3,24 @@ const router = require('express').Router();
 const clog = require('../../utils/cLogger');
 const {onlyIfLoggedIn, homeRedirectOnSessionOut} = require('../../middleware/auth');
 
+// function that objectifies the name: tag_name parameter, filters duplicates and toLowerCases
 async function makeTagBulkCreatePackage(tag_list) {
-    var tags = tag_list.map((name) => {
-        return {"name": name};
+
+    var uniqueLowerNonEmptyTags = [];
+
+    // create a list of unique tags
+    let unique_tag_list = [...new Set(tag_list)];
+
+    unique_tag_list.forEach((tag)=>{
+        // make lower case
+        let lower_name = tag.toLowerCase();
+        // remove any duplicates and empty tags
+        if((lower_name !== '')){
+            uniqueLowerNonEmptyTags.push({"name": lower_name});
+        }
     })
-    return tags;
+
+    return uniqueLowerNonEmptyTags;
 }
 
 async function makePostTagBulkCreatePackage(tagObjs, postObj){
@@ -70,8 +83,8 @@ router.put('/:id', onlyIfLoggedIn, async (req, res) => {
         // prepare the tags with tag_name label
         let prepped_tags = await makeTagBulkCreatePackage(req.body.tag_list);
         let tagObjs = await Tag.bulkCreate(prepped_tags, {
-            ignoreDuplicates: true,
-            // updateOnDuplicate: ['name'],
+            // ignoreDuplicates: true,
+            updateOnDuplicate: ['name'],
             // apply hooks to all elements in bulk
             individualHooks: true,
             returning: true
