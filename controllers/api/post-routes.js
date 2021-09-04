@@ -1,4 +1,4 @@
-const { Post, Tag, PostTag } = require('../../models');
+const { Post, Tag, PostTag, Comment } = require('../../models');
 const router = require('express').Router();
 const clog = require('../../utils/cLogger');
 const {onlyIfLoggedIn, homeRedirectOnSessionOut} = require('../../middleware/auth');
@@ -100,11 +100,22 @@ router.put('/:id', onlyIfLoggedIn, async (req, res) => {
 })
 
 // route for adding a comment to a post
-router.post('/comment/:id', onlyIfLoggedIn, async (req, res) => {
+router.post('/comment', onlyIfLoggedIn, async (req, res) => {
     try{
-        
+        let comment = await Comment.create({
+            content: req.body.content,
+            post_id: req.body.post_id,
+            user_id: req.session.user_id
+        });
+        if(comment){
+            clog('Successfully posted comment', 'green');
+            res.redirect(`/post/${req.body.post_id}`);
+        } else {
+            clog('Failed to create comment', 'red');
+            res.status(400).json({message:"Failed to create comment based on submitted details"})
+        }
     }catch(err){
-        clog('Failed to add comment to post', 'red');
+        clog(err, 'red');
         res.status(500).json({message:"Failed to add comment to post"})
     }
 })
