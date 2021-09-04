@@ -3,7 +3,7 @@ require('dotenv').config();
 // https://lo-victoria.com/build-a-mysql-nodejs-crud-app-4-deploying-to-heroku-finale
 // https://www.bezkoder.com/deploy-node-js-app-heroku-cleardb-mysql/#Deploy_the_app_to_Heroku
 let connection;
-
+// https://devcenter.heroku.com/articles/jawsdb#using-jawsdb-with-node-js
 if (process.env.JAWSDB_URL) {
     connection = new Sequelize(process.env.JAWSDB_URL);
   } else {

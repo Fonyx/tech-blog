@@ -44,7 +44,8 @@ router.post('/', onlyIfLoggedIn, async (req, res) => {
         // prepare the tags with tag_name label
         let prepped_tags = await makeTagBulkCreatePackage(req.body.tag_list);
         let tagObjs = await Tag.bulkCreate(prepped_tags, {
-            ignoreDuplicates: true,
+            // ignoreDuplicates: true,
+            updateOnDuplicate: ['name'],
             individualHooks: true,
             returning: true
         });

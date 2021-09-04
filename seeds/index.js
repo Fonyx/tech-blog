@@ -5,7 +5,7 @@ const tagData = require('./tag-data.json');
 const postData = require('./post-data.json');
 const postTagData = require('./post-tags-data.json');
 const commentData = require('./comment-data.json');
-
+// https://fuzzyblog.io/blog/heroku/2019/10/16/importing-your-local-mysql-database-into-heroku.html
 const seedDatabase = async() => {
     
     await connection.sync({force: true});
