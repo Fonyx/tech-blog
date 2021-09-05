@@ -1,23 +1,31 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
+
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Login</a>
+    </div>
+</nav>
+
+<main class="valign-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <form class="form login-form row">
+          <div class="form-group">
+            <label for="email-login">email:</label>
+            <input class="form-input" type="text" id="email-login" />
+          </div>
+          <div class="row">
+            <label for="password-login">password:</label>
+            <input class="form-input" type="password" id="password-login" />
+          </div>
+          <div class="row center-align">
+            <button class="btn" type="submit">login</button>
+            <button onclick="document.location.replace('/')" class="btn grey" type="cancel">cancel</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-      <div class="form-group">
-        <button onclick="document.location.replace('/')" class="btn btn-primary" type="cancel">cancel</button>
-      </div>
-    </form>
+    </div>
   </div>
-</div>
+</main>
 
 <script src="/js/login.js"></script>

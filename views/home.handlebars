@@ -1,6 +1,6 @@
 <header>
   <nav>
-    <div class="nav-wrapper grey lighten-1">
+    <div class="nav-wrapper">
       <a href="#" class="brand-logo center">Tech Blog Dashboard</h1>
       <ul id="nav-mobile" class="right">
         {{#if logged_in}}
@@ -23,32 +23,10 @@
         {{/if}}
       </ul>
     </div>
-
-  {{!-- mobile hamburger --}}
-  <ul class="sidenav" id="mobile-demo">
-    {{#if logged_in}}
-      <li>
-        <a class="right " href="/profile" id="profile-link">Profile</a>
-      </li>
-      <li>
-        <a class="right" href="/profile/post">New Post</a>
-      </li>
-      <li>
-        <a class="right" id="logout">logout</a>
-      </li>
-    {{else}}
-      <li>
-        <a class="right" href="/login" id="login">LOGIN</a>
-      </li>
-      <li>
-        <a class="right " href="/signup" id="signup">SIGNUP</a>
-      </li>
-    {{/if}}
-  </ul>
-
   </nav>
 </header>
 <main>
+  <br>
   <div class="container">
     {{#each posts as |post|}}
       {{> post-detail}}

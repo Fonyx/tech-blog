@@ -4,7 +4,7 @@ body {
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
     /* use the red colour for materialize */
-    background-image: linear-gradient(180deg, #EE6E73, white);
+    /* background-image: linear-gradient(180deg, #EE6E73, white); */
   }
 
 main {
