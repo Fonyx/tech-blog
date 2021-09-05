@@ -5,20 +5,22 @@
     </nav>
 </header>
 <main>
-    {{>post-detail post}}
-    <div class="col-md-6">
-        <form class="form create-comment-form">
-            <div class="form-group">
-                <label for="content-create-comment">Content</label>
-                <input class="form-input" type="text" data-post_id="{{post.id}}" id="content-create-comment"/>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit">Comment</button>
-            </div>
-            <div class="form-group">
-                <a href="/post/{{post.id}}" class="btn btn-primary">Cancel</a>
-            </div>
-        </form>
+    <div class="container">
+        {{>post-detail-full post}}
+        <div class="col-md-6">
+            <form class="form create-comment-form">
+                <div class="form-group">
+                    <label for="content-create-comment">Content</label>
+                    <input class="form-input" type="text" data-post_id="{{post.id}}" id="content-create-comment"/>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Comment</button>
+                </div>
+                <div class="form-group">
+                    <a href="/post/{{post.id}}" class="btn btn-primary">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
 
   <script src="/js/create-comment.js"></script>

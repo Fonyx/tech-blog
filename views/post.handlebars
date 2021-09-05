@@ -3,7 +3,9 @@
   <nav>
     {{#if logged_in}}
         <a class="btn" id="logout">logout</a>
-        <a class="btn" href="/post/{{post.id}}/comment/">Add Comment</a>
+        {{#unless user_is_owner}}
+            <a class="btn" href="/post/{{post.id}}/comment/">Add Comment</a>
+        {{/unless}}
         {{#if user_is_owner}}
             <a class="btn" href="/post/update/{{post.id}}" id="update-post-redirect">Update Post</a>
         {{/if}}

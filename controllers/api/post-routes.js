@@ -123,6 +123,7 @@ router.post('/comment', onlyIfLoggedIn, async (req, res) => {
         });
         if(comment){
             clog('Successfully posted comment', 'green');
+            // this is redirecting to profile for some reason
             res.redirect(`/post/${req.body.post_id}`);
         } else {
             clog('Failed to create comment', 'red');
