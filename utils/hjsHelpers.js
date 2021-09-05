@@ -22,5 +22,8 @@ module.exports = {
     },
     parameterize: (text) => {
         return text.replace(/\s+/g, '-').toLowerCase();
+    },
+    truncate: (text) => {
+        return text.slice(0, 100) + '...'
     }
 };

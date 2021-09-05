@@ -1,23 +1,35 @@
 <header>
-  <h1>Home</h1>
-  {{#if logged_in}}
-      <nav>
-        <a class="btn" href="/profile" id="profile-link">Profile</a>
-        <a class="btn" href="/profile/post">New Post</a>
-        <button class="btn" id="logout">logout</button>
-      </nav>
-  {{else}}
-      <nav>
-        <a class="btn" href="/login" id="login">login</a>
-        <a class="btn" href="/signup" id="signup">signup</a>
-      </nav>
-  {{/if}}
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Tech Blog Dashboard</h1>
+      <ul id="nav-mobile" class="right hide-on-small-and-down">
+        {{#if logged_in}}
+              <li>
+                <a class="right " href="/profile" id="profile-link">Profile</a>
+              </li>
+              <li>
+                <a class="right" href="/profile/post">New Post</a>
+              </li>
+              <li>
+                <a class="right" id="logout">logout</a>
+              </li>
+        {{else}}
+              <li>
+                <a class="right" href="/login" id="login">LOGIN</a>
+              </li>
+              <li>
+                <a class="right " href="/signup" id="signup">SIGNUP</a>
+              </li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
 </header>
 <main>
   {{#each posts as |post|}}
     {{> post-detail}}
-    {{#each post.tags as |tag|}}
+    {{!-- {{#each post.tags as |tag|}}
       {{> tag-detail}}
-    {{/each}}
+    {{/each}} --}}
   {{/each}}
 </main>

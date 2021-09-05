@@ -1,5 +1,24 @@
-<a href="/post/{{id}}">
-    <h3>{{title}}</h2>
-    <p>{{content}}</p>
-    <p>{{owner.username}}</p>
-</a>
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12">
+            <a href="/post/{{id}}">
+                <div class="card teal darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title right">{{owner.username}} {{format_date created}}</span>
+                        <span class="card-title">{{title}}</span>
+                        <span class="card-content">{{truncate content}}</span>
+                    </div>
+            </a>
+                    {{#if tags}}
+                        <div class="card-tabs">
+                            <ul class="tabs tabs-fixed-width">
+                                {{#each tags as |tag|}}
+                                    <li class="tab"><a class="{{materialize_color}} {{materialize_modifier}} {{materialize_text_color}}-text" href="/tag/{{parameterize name}}">{{name}}</a></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    {{/if}}
+                </div>
+        </div>
+    </div>
+</div>
