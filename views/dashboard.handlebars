@@ -5,13 +5,13 @@
       <ul id="nav-mobile" class="right">
         {{#if logged_in}}
               <li>
-                <a class="right " href="/profile" id="profile-link">Profile</a>
+                <a class="right " href="/profile" id="profile-link">PROFILE</a>
               </li>
               <li>
-                <a class="right" href="/profile/post">New Post</a>
+                <a class="right" href="/profile/post">CREATE POST</a>
               </li>
               <li>
-                <a class="right" id="logout">logout</a>
+                <a class="right" id="logout">LOGOUT</a>
               </li>
         {{else}}
               <li>
@@ -33,3 +33,7 @@
     {{/each}}
   </div>
 </main>
+
+{{#if logged_in}}
+    <script src="/js/logout.js"></script>
+  {{/if}}

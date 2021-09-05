@@ -1,42 +1,33 @@
 <header>
-  <h1>Individual Post</h1>
-  {{#if logged_in}}
-      <nav>
-        <button class="btn" id="logout">logout</button>
-      </nav>
-  {{else}}
-      <nav>
-        <a class="btn" href="/login" id="login-redirect">login</a>
-        <a class="btn" href="/signup" id="signup-redirect">signup</a>
-      </nav>
-  {{/if}}
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">UPDATE POST</a>
+        </div>
+    </nav>
 </header>
-<main>
-    <div class="col-md-6">
-        <h2>Update Post</h2>
-        <form class="form update-post-form">
-            <div class="form-group">
-                <label for="title-update-post">Title</label>
-                <input class="form-input" type="text" id="title-update-post" data-id="{{post.id}}" value="{{post.title}}"/>
-            </div>
-            <div class="form-group">
-                <label for="content-update-post">Content</label>
-                <input class="form-input" type="text" id="content-update-post" value="{{post.content}}"/>
-            </div>
-            <div class="form-group">
-                <label for="tags-update-post">Tags</label>
-                <input class="form-input" type="text" id="tags-update-post" placeholder="Comma separated text for tags" value="{{stringify post.tags}}"/>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit">Update</button>
-            </div>
-            <div class="form-group">
-                <a href="/" class="btn btn-primary">Cancel</a>
-            </div>
-            <div class="form-group">
-                <a href="/post/update/delete/{{post.id}}" class="btn btn-primary red">Delete</a>
-            </div>
-        </form>
+<main class="valign-wrapper">
+    <div class="container">
+        <div class="col-md-6">
+            <form class="form update-post-form">
+                <div class="form-group">
+                    <label for="title-update-post">Title</label>
+                    <input class="form-input" type="text" id="title-update-post" data-id="{{post.id}}" value="{{post.title}}"/>
+                </div>
+                <div class="form-group">
+                    <label for="content-update-post">Content</label>
+                    <input class="form-input" type="text" id="content-update-post" value="{{post.content}}"/>
+                </div>
+                <div class="form-group">
+                    <label for="tags-update-post">Tags</label>
+                    <input class="form-input" type="text" id="tags-update-post" placeholder="Comma separated text for tags" value="{{stringify post.tags}}"/>
+                </div>
+                <div class="form-group row center-align">
+                    <button class="btn" type="submit">UPDATE</button>
+                    <a href="/" class="btn grey">CANCEL</a>
+                    <a href="/post/update/delete/{{post.id}}" class="btn btn-primary red">DELETE</a>
+                </div>
+            </form>
+        </div>
     </div>
 
   <script src="/js/update-post.js"></script>

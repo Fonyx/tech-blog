@@ -19,7 +19,7 @@
 </header>
 <main>
     <br>
-    
+        
         {{#with post}}
             {{> post-details-content}}
         {{/with}}
@@ -33,7 +33,8 @@
         {{#each post.comments as |comment|}}
             {{> comment-detail}}
         {{/each}}
-        
-   
-
 </main>
+
+{{#if logged_in}}
+    <script src="/js/logout.js"></script>
+  {{/if}}

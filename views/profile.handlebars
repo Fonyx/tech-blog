@@ -2,7 +2,7 @@
     <nav>
         <div class="nav-wrapper">
             {{#if posts.[0]}}
-                <a href="#" class="brand-logo center">{{posts.[0].owner.username}} Posts</a>
+                <a href="#" class="brand-logo center">{{uppercase posts.[0].owner.username}} POSTS</a>
             {{else}}
                 <a href="#" class="brand-logo center">Your Posts</a>
             {{/if}}
@@ -11,7 +11,7 @@
                 <a class="right" href="/">DASHBOARD</a>
             </li>
             <li>
-                <a class="right" href="/profile/post">CREATE</a>
+                <a class="right" href="/profile/post">CREATE POST</a>
             </li>
             <li>
                 <a class="right" id="logout">LOGOUT</a>
