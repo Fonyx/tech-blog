@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card grey lighten-3">
+            <div class="card-content black-text">
+                <span class="card-content">{{content}}</span>
+            </div>
+            {{#if tags}}
+                <div class="card-tabs">
+                    <ul class="tabs tabs-fixed-width">
+                        {{#each tags as |tag|}}
+                            <li class="tab"><a class="{{materialize_color}} {{materialize_modifier}} {{materialize_text_color}}-text" href="/tag/{{parameterize name}}">{{name}}</a></li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

@@ -1,36 +1,39 @@
 <header>
-  <h1>Individual Post</h1>
-  <nav>
-    {{#if logged_in}}
-        <a class="btn" id="logout">logout</a>
-        {{#unless user_is_owner}}
-            <a class="btn" href="/post/{{post.id}}/comment/">Add Comment</a>
-        {{/unless}}
-        {{#if user_is_owner}}
-            <a class="btn" href="/post/update/{{post.id}}" id="update-post-redirect">Update Post</a>
-        {{/if}}
-    {{else}}
-        <a class="btn" href="/login" id="login-redirect">login</a>
-        <a class="btn" href="/signup" id="signup-redirect">signup</a>
-    {{/if}}
-        <a class="btn" href="/">home</a>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo left">{{uppercase post.title}}</a>
+            <ul id="nav-mobile" class="right">
+                <li><a class="right" href="/">DASHBOARD</a></li>
+                {{#if logged_in}}
+                    <li><a class="right" id="logout">LOGOUT</a></li>
+                    {{#if user_is_owner}}
+                        <li><a class="right" href="/post/update/{{post.id}}" id="update-post-redirect">UPDATE POST</a></li>
+                    {{/if}}
+                {{else}}
+                    <li><a class="right" href="/login" id="login-redirect">LOGIN</a></li>
+                    <li><a class="right" href="/signup" id="signup-redirect">SIGNUP</a></li>
+                {{/if}}
+            </ul>
+        </div>
   </nav>
 </header>
 <main>
-    <div class="card">
-        <h3>{{post.owner.username}}</h3>
-        <div class="card-title">
-            <h2>{{post.title}}</h2>
+    <br>
+    
+        {{#with post}}
+            {{> post-details-content}}
+        {{/with}}
+        <div class="container center-align">
+            {{#unless user_is_owner}}
+                <a class="btn" href="/post/{{post.id}}/comment/">ADD COMMENT</a>
+            {{/unless}}
         </div>
-        <div class="card-content">
-            <p>{{post.content}}</p>
-        </div>
-    </div>
+        <br>
 
-    {{#each post.comments as |comment|}}
-        {{> comment-detail}}
-    {{/each}}
-    {{#each post.tags as |tag|}}
-        {{> tag-detail}}
-    {{/each}}
+        {{#each post.comments as |comment|}}
+            {{> comment-detail}}
+        {{/each}}
+        
+   
+
 </main>

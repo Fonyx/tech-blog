@@ -25,5 +25,8 @@ module.exports = {
     },
     truncate: (text) => {
         return text.slice(0, 100) + '...'
+    },
+    uppercase: (text) => {
+        return text.toUpperCase();
     }
 };

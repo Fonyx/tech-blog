@@ -1,7 +1,7 @@
 const { Post, Tag, PostTag, Comment } = require('../../models');
 const router = require('express').Router();
 const clog = require('../../utils/cLogger');
-const {onlyIfLoggedIn, homeRedirectOnSessionOut} = require('../../middleware/auth');
+const {onlyIfLoggedIn} = require('../../middleware/auth');
 
 // function that objectifies the name: tag_name parameter, filters duplicates and toLowerCases
 async function makeTagBulkCreatePackage(tag_list) {
