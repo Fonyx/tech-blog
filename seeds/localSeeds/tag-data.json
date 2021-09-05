@@ -13,5 +13,20 @@
     },
     {
       "name": "database"
+    },
+    {
+      "name": "encryption"
+    },
+    {
+      "name": "sql"
+    },
+    {
+      "name": "css"
+    },
+    {
+      "name": "animation"
+    },
+    {
+      "name": "next"
     }
 ]

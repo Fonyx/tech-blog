@@ -26,10 +26,12 @@
   </nav>
 </header>
 <main>
-  {{#each posts as |post|}}
-    {{> post-detail}}
-    {{!-- {{#each post.tags as |tag|}}
-      {{> tag-detail}}
-    {{/each}} --}}
-  {{/each}}
+  <div class="container">
+    {{#each posts as |post|}}
+      {{> post-detail}}
+      {{!-- {{#each post.tags as |tag|}}
+        {{> tag-detail}}
+      {{/each}} --}}
+    {{/each}}
+  </div>
 </main>

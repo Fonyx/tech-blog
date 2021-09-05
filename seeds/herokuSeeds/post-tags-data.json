@@ -22,5 +22,29 @@
     {
       "post_id": 25,
       "tag_name": "database"
+    },
+    {
+      "post_id": 35,
+      "tag_name": "encryption"
+    },
+    {
+      "post_id": 35,
+      "tag_name": "sql"
+    },
+    {
+      "post_id": 45,
+      "tag_name": "animation"
+    },
+    {
+      "post_id": 45,
+      "tag_name": "css"
+    },
+    {
+      "post_id": 55,
+      "tag_name": "next"
+    },
+    {
+      "post_id": 55,
+      "tag_name": "node"
     }
 ]

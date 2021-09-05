@@ -9,3 +9,6 @@ body {
     flex: 1 0 auto;
   }
       
+  .container{
+    background-image: linear-gradient(-135deg, black, white);
+  }
