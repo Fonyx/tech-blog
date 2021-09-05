@@ -1,7 +1,7 @@
 [
     {
         "content":"I love full stack",
-        "post_id":45,
+        "post_id":5,
         "user_id":15
     },
     {
@@ -12,11 +12,11 @@
     {
         "content":"Toight security bruz!",
         "post_id":25,
-        "user_id":45
+        "user_id":5
     },
     {
         "content":"Some other comment",
-        "post_id":45,
+        "post_id":5,
         "user_id":15
     },
     {
@@ -27,6 +27,6 @@
     {
         "content":"Are you trying to start a flame war!?",
         "post_id":25,
-        "user_id":45
+        "user_id":5
     }
 ]
