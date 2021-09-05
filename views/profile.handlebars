@@ -2,21 +2,21 @@
     <nav>
         <div class="nav-wrapper">
             {{#if posts.[0]}}
-                <a href="#" class="brand-logo center">{{uppercase posts.[0].owner.username}} POSTS</a>
+                <a href="#" class="brand-logo left">{{uppercase posts.[0].owner.username}} POSTS</a>
             {{else}}
-                <a href="#" class="brand-logo center">Your Posts</a>
+                <a href="#" class="brand-logo left">YOUR POSTS</a>
             {{/if}}
-        <ul id="nav-mobile" class="right">
-            <li>
-                <a class="right" href="/">DASHBOARD</a>
-            </li>
-            <li>
-                <a class="right" href="/profile/post">CREATE POST</a>
-            </li>
-            <li>
-                <a class="right" id="logout">LOGOUT</a>
-            </li>
-        </ul>
+            <ul id="nav-mobile" class="right">
+                <li>
+                    <a class="left" href="/">DASHBOARD</a>
+                </li>
+                <li>
+                    <a class="right" href="/profile/post">CREATE POST</a>
+                </li>
+                <li>
+                    <a class="right" id="logout">LOGOUT</a>
+                </li>
+            </ul>
     </nav>
 </header>
 
