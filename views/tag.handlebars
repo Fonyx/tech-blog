@@ -1,27 +1,31 @@
 <header>
-  <h1>
-    Posts Tagged with {{tag.name}}
-  </h1>
-      <nav>
-        {{#if logged_in}}
-              <button class="btn" id="logout">logout</button>
-              <a class="btn" href="/post/comment/{{post.id}}">Add Comment</a>
-        {{else}}
-              <a class="btn" href="/login" id="login">login</a>
-              <a class="btn" href="/signup" id="signup">signup</a>
-        {{/if}}
-        <a class="btn" href="/">home</a>
-      </nav>
+
+  <nav class="{{tag.materialize_color}}">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo left {{tag.materialize_color}} {{materialize_modifier}} {{tag.materialize_text_color}}-text">POSTS TAGGED WITH {{uppercase tag.name}}</a>
+            <ul id="nav-mobile" class="right">
+                <li><a class="right {{tag.materialize_text_color}}-text" href="/">DASHBOARD</a></li>
+                {{#if logged_in}}
+                    <li><a class="right {{tag.materialize_text_color}}-text" href="/profile" id="profile-link">PROFILE</a></li>
+                    <li><a class="right {{tag.materialize_text_color}}-text" id="logout">LOGOUT</a></li>
+                {{else}}
+                    <li><a class="right {{tag.materialize_text_color}}-text" href="/login" id="login-redirect">LOGIN</a></li>
+                    <li><a class="right {{tag.materialize_text_color}}-text" href="/signup" id="signup-redirect">SIGNUP</a></li>
+                {{/if}}
+            </ul>
+        </div>
+  </nav>
+
 </header>
 <main>
-  {{#each tag.posts as |post|}}
-    {{> post-detail}}
-    {{#each post.comments as |comment|}}
-      {{> comment-detail}}
+  <br>
+  <div class="container">
+    {{#each tag.posts as |post|}}
+      {{> post-detail}}
     {{/each}}
-  {{/each}}
+  </div>
 </main>
 
 {{#if logged_in}}
-    <script src="/js/logout.js"></script>
-  {{/if}}
+  <script src="/js/logout.js"></script>
+{{/if}}
