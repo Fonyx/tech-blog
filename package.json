@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jest --coverage",
-    "seed": "node seeds/index.js",
+    "seed-local": "node seeds/local.js",
+    "seed-heroku": "node seeds/heroku.js",
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
