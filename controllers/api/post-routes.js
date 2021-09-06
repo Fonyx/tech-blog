@@ -133,7 +133,7 @@ router.post('/comment', onlyIfLoggedIn, async (req, res) => {
         clog(err, 'red');
         res.status(500).json({message:"Failed to add comment to post"})
     }
-})
+});
 
 // route for deleting a post
 router.delete('/delete', onlyIfLoggedIn, async(req, res) => {

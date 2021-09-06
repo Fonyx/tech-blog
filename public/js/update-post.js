@@ -26,7 +26,6 @@ const updatePostFormHandler = async (event) => {
 
         if(response.ok){
             console.log('Post successful');
-            document.location.replace('/profile');
         } else {
             console.log('Failed to update post');
             alert(response.statusText);

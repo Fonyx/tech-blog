@@ -1,4 +1,4 @@
-const { User, Post, Tag } = require('../models');
+const { User, Comment, Post, Tag } = require('../models');
 const router = require('express').Router();
 const {onlyIfLoggedIn} = require('../middleware/auth');
 const clog = require('../utils/cLogger');
@@ -200,11 +200,53 @@ router.get('/post/update/delete/:id', async(req, res) => {
   try{
       let postObj = await Post.findByPk(req.params.id);
       let post = postObj.get();
-      res.render('confirm-delete', post);
+      res.render('confirm-delete-post', post);
   }catch(err){
       clog(err, 'red');
       res.status(500).json(err);
   }
+});
+
+// route for deleting a comment
+router.get('/comment/update/delete/:id', async(req, res) => {
+  try{
+      let postObj = await Post.findByPk(req.params.id);
+      let post = postObj.get();
+      res.render('confirm-delete-comment', post);
+  }catch(err){
+      clog(err, 'red');
+      res.status(500).json(err);
+  }
+});
+
+// route for viewing a comment - yuck route, models can't give back their owner object - this isn't an issue for the get/post because all the data is returned as nested objects - this should be improved
+router.get('/comment/:id', async(req, res) => {
+  try{
+    // get comment object
+    let commentObj = await Comment.findByPk(req.params.id, {
+      all: true,
+      nested: true
+    });
+    let comment = commentObj.get();
+    // get post object
+    let postObj = await Post.findByPk(comment.post_id, {
+      all: true,
+      nested: true
+    });
+    let post = postObj.get();
+    // get comment owner object
+    let commentOwnerObj = await User.findByPk(comment.user_id, {
+      all: true,
+      nested: true
+    });
+    let commentOwner = commentOwnerObj.get();
+    // check if the comment owner is currently logged in
+    let commenter_is_comment_owner = req.session.user_id === commentOwner.id? true: false
+    res.render('comment', {comment, post, commentOwner, commenter_is_comment_owner});
+}catch(err){
+    clog(err, 'red');
+    res.status(500).json(err);
+}
 });
 
 module.exports = router;

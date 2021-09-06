@@ -8,11 +8,14 @@
 <main class="valign-wrapper">
   <div class="container center-align">
     <div class="col-md-6">
+      <div class="row">
         <h2>Delete Post</h2>
-
+      </div>
+      <div class="row">
         <a id="delete" class="btn btn-primary red" data-id="{{id}}">Delete</a>
-
-        <a href="/post/update/{{id}}" class="btn btn-primary">Back Away Slowly</a>
+        <a href="#" onclick="window.history.back()" class="btn btn-primary">Back Away Slowly</a>
+        {{!-- <a href="/post/update/{{id}}" class="btn btn-primary">Back Away Slowly</a> --}}
+      </div>
     </div>
   </div>
 
