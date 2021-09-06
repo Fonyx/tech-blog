@@ -38,9 +38,18 @@
 <main>
   <br>
   <div class="container">
-    {{#each tag.posts as |post|}}
-      {{> post-detail-full}}
-    {{/each}}
+    <div class="row">
+      <div class="col s12 m12 l9">
+        {{#each tag.posts as |post|}}
+          {{> post-detail-full}}
+        {{/each}}
+      </div>
+      <div class="col s3 hide-on-med-and-down">
+        {{#each allTags as |tag|}}
+          {{> tag-card}}
+        {{/each}}
+      </div>
+    </div>
   </div>
 </main>
 
