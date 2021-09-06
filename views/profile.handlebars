@@ -1,22 +1,37 @@
 <header>
-    <nav>
-        <div class="nav-wrapper">
-            {{#if posts.[0]}}
-                <a href="#" class="brand-logo left">{{uppercase posts.[0].owner.username}} POSTS</a>
-            {{else}}
-                <a href="#" class="brand-logo left">YOUR POSTS</a>
-            {{/if}}
-            <ul id="nav-mobile" class="right">
-                <li>
-                    <a class="left" href="/">DASHBOARD</a>
-                </li>
-                <li>
-                    <a class="right" href="/profile/post">CREATE POST</a>
-                </li>
-                <li>
-                    <a class="right" id="logout">LOGOUT</a>
-                </li>
-            </ul>
+
+    <nav class="tert_bg_color" role="navigation">
+      <div class="nav-wrapper">
+        {{#if posts.[0]}}
+            <a id="logo-container" href="#" class="brand-logo">{{uppercase posts.[0].owner.username}} POSTS</a>
+        {{else}}
+            <a id="logo-container" href="#" class="brand-logo">YOUR POSTS</a>
+        {{/if}}
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <a href="/">DASHBOARD</a>
+            </li>
+            <li>
+                <a href="/profile/post">CREATE POST</a>
+            </li>
+            <li>
+                <a href="/logout" id="logout">LOGOUT</a>
+            </li>
+        </ul>
+  
+        <ul id="nav-mobile" class="sidenav sec_text_color">
+            <li>
+                <a href="/">DASHBOARD</a>
+            </li>
+            <li>
+                <a href="/profile/post">CREATE POST</a>
+            </li>
+            <li>
+                <a href="/logout" id="logout">LOGOUT</a>
+            </li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+      </div>
     </nav>
 </header>
 

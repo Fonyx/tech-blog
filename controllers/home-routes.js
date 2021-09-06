@@ -61,6 +61,17 @@ router.get('/login', (req, res) => {
   }
 })
 
+// get logout confirm template
+router.get('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    clog('Redirecting to logout confirmation', 'magenta');
+      res.render('confirm-logout');
+  } else {
+    clog('User not logged in, ignoring request', 'yellow')
+      res.status(404).end();
+  }
+  });
+
 // get signup empty page, renders signup template
 router.get('/signup', (req, res) => {
   try{
