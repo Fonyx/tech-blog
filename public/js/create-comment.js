@@ -15,7 +15,7 @@ const createCommentFormHandler = async (event) => {
 
         if(response.ok){
             console.log('Post successful');
-            document.location.replace('/profile');
+            document.location.replace(`/post/${post_id}`);
         } else {
             console.log('User failed to signup');
             alert(response.statusText);
