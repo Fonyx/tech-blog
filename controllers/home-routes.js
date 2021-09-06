@@ -210,9 +210,11 @@ router.get('/post/update/delete/:id', async(req, res) => {
 // route for deleting a comment
 router.get('/comment/update/delete/:id', async(req, res) => {
   try{
-      let postObj = await Post.findByPk(req.params.id);
-      let post = postObj.get();
-      res.render('confirm-delete-comment', post);
+    let commentObj = await Comment.findByPk(req.params.id);
+    let comment = commentObj.get();
+    let postObj = await Post.findByPk(comment.post_id);
+    let post = postObj.get();
+    res.render('confirm-delete-comment', {post, comment});
   }catch(err){
       clog(err, 'red');
       res.status(500).json(err);
