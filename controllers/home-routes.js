@@ -24,24 +24,28 @@ router.get('/', async (req, res) => {
   }
 });
 
-// tag route get all posts for a tag
+// tag route gests all tags, and returns a sound tag and a list of allTags
 router.get('/tag/:name', async (req, res) => {
   try {
     let spaceName = req.params.name.replace(/-+/g, ' ');
-    // Get all posts, sorted by title
-    const rawTag = await Tag.findOne({
-      where: {name: spaceName},
+
+    const allRawTags = await Tag.findAll({
       include: [{nested: true, all: true}],
       order: [['name', 'ASC']],
-    });
+    })
 
-    // Serialize user data so templates can read it
-    const tag = rawTag.get({ plain: true });
+    // Serialize all tags
+    const allTags = allRawTags.map((tag)=>{
+      return tag.get({plain:true});
+    })
+
+    // get the searched tag and return separately
+    const tag = allTags.find(element => element.name===spaceName);
 
     let session_logged_in = req.session.logged_in? true: false;
 
     // Pass serialized data into Handlebars.js template
-    res.render('tag', { layout:'main', tag, logged_in: session_logged_in });
+    res.render('tag', { layout:'main', tag, allTags, logged_in: session_logged_in });
   } catch (err) {
     res.status(500).json(err.message);
   }

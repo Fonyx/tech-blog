@@ -1,20 +1,38 @@
 <header>
 
-  <nav class="{{tag.materialize_color}}">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo left {{tag.materialize_color}} {{materialize_modifier}} {{tag.materialize_text_color}}-text">POSTS TAGGED WITH {{uppercase tag.name}}</a>
-            <ul id="nav-mobile" class="right">
-                <li><a class="right {{tag.materialize_text_color}}-text" href="/">DASHBOARD</a></li>
-                {{#if logged_in}}
-                    <li><a class="right {{tag.materialize_text_color}}-text" href="/profile" id="profile-link">PROFILE</a></li>
-                    <li><a class="right {{tag.materialize_text_color}}-text" id="logout">LOGOUT</a></li>
-                {{else}}
-                    <li><a class="right {{tag.materialize_text_color}}-text" href="/login" id="login-redirect">LOGIN</a></li>
-                    <li><a class="right {{tag.materialize_text_color}}-text" href="/signup" id="signup-redirect">SIGNUP</a></li>
-                {{/if}}
-            </ul>
-        </div>
-  </nav>
+  <nav role="navigation" class="{{tag.materialize_color}} {{tag.materialize_modifier}}">
+      <div class="nav-wrapper">
+
+        
+        <a href="#" class="brand-logo left {{tag.materialize_text_color}}-text">POSTS TAGGED WITH {{uppercase tag.name}}</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="{{tag.materialize_text_color}}-text" href="/">DASHBOARD</a></li>
+            {{#if logged_in}}
+                <li><a class="{{tag.materialize_text_color}}-text" href="/profile" id="profile-link">PROFILE</a></li>
+                <li><a class="{{tag.materialize_text_color}}-text" id="logout">LOGOUT</a></li>
+            {{else}}
+                <li><a class="{{tag.materialize_text_color}}-text" href="/login" id="login-redirect">LOGIN</a></li>
+                <li><a class="{{tag.materialize_text_color}}-text" href="/signup" id="signup-redirect">SIGNUP</a></li>
+            {{/if}}
+        </ul>
+  
+        <ul id="nav-mobile" class="sidenav sec_text_color">
+            <li><a class="black-text" href="/">DASHBOARD</a></li>
+            {{#if logged_in}}
+                <li><a class="black-text" href="/profile" id="profile-link">PROFILE</a></li>
+                <li><a class="black-text" id="logout">LOGOUT</a></li>
+            {{else}}
+                <li><a class="black-text" href="/login" id="login-redirect">LOGIN</a></li>
+                <li><a class="black-text" href="/signup" id="signup-redirect">SIGNUP</a></li>
+            {{/if}}
+            <li><a href="#">--OTHER TAGS--</a></li>
+            {{#each allTags as |tag|}}
+              <li><a href="/tag/{{parameterize tag.name}}" class="{{tag.materialize_color}} {{tag.materialize_text_color}}-text" id="login-redirect">{{uppercase tag.name}}</a></li>
+            {{/each}}
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
 
 </header>
 <main>
