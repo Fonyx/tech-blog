@@ -1,6 +1,6 @@
 const { User, Post, Tag } = require('../models');
 const router = require('express').Router();
-const {onlyIfLoggedIn, homeRedirectOnSessionOut} = require('../middleware/auth');
+const {onlyIfLoggedIn} = require('../middleware/auth');
 const clog = require('../utils/cLogger');
 
 // home route get request
@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// tag route gests all tags, and returns a sound tag and a list of allTags
+// tag route gets all tags, and returns a sound tag and a list of allTags
 router.get('/tag/:name', async (req, res) => {
   try {
     let spaceName = req.params.name.replace(/-+/g, ' ');
@@ -66,7 +66,7 @@ router.get('/login', (req, res) => {
 })
 
 // get logout confirm template
-router.get('/logout', (req, res) => {
+router.get('/logout', onlyIfLoggedIn, (req, res) => {
   if (req.session.logged_in) {
     clog('Redirecting to logout confirmation', 'magenta');
       res.render('confirm-logout');
@@ -119,7 +119,7 @@ router.get('/profile/post', onlyIfLoggedIn, async(req, res) => {
   }
 });
 
-// get a specific post - render post view
+// get a specific post - render post view - you can do this when not logged in
 router.get('/post/:id', async(req, res) => {
 
   try{
@@ -150,7 +150,7 @@ router.get('/post/:id', async(req, res) => {
 
 
 // get a specific post to update - render post view
-router.get('/post/update/:id', async(req, res) => {
+router.get('/post/update/:id',onlyIfLoggedIn, async(req, res) => {
 
   try{
     var postObj = await Post.findByPk(req.params.id, {
@@ -162,9 +162,18 @@ router.get('/post/update/:id', async(req, res) => {
     })
 
     if(postObj){
+
       var post = postObj.get({plain: true});
-      clog(`Found post: ${post.title}`, 'green');
-      res.render('update-post',{post, logged_in:req.session.logged_in});
+
+      // check post owner is the current user
+      if(post.owner.id === req.session.user_id){
+        clog(`Found post: ${post.title}`, 'green');
+        res.render('update-post',{post, logged_in:req.session.logged_in});
+      } else {
+        clog('User does not have permission to update this post', 'red');
+        res.redirect('/login');
+      }
+
     } else {
       res.status(404).json({message:`No post for id:${req.params.id}`})
     }

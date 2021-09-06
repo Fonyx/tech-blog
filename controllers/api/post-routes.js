@@ -136,7 +136,7 @@ router.post('/comment', onlyIfLoggedIn, async (req, res) => {
 })
 
 // route for deleting a post
-router.delete('/delete', async(req, res) => {
+router.delete('/delete', onlyIfLoggedIn, async(req, res) => {
     try{
         let postObj = await Post.findByPk(req.body.post_id);
         await postObj.destroy();
