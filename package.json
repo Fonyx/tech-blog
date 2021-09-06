@@ -15,8 +15,8 @@
     "url": "git+https://github.com/Fonyx/tech-blog.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Fonyx",
+  "license": "GNU General Public License v3.0",
   "bugs": {
     "url": "https://github.com/Fonyx/tech-blog/issues"
   },
