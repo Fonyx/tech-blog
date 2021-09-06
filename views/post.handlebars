@@ -2,18 +2,31 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" class="brand-logo left">{{uppercase post.title}}</a>
-            <ul id="nav-mobile" class="right">
+            <ul class="right hide-on-med-and-down">
                 <li><a class="right" href="/">DASHBOARD</a></li>
                 {{#if logged_in}}
-                    <li><a class="right" id="logout">LOGOUT</a></li>
+                    <li><a href="/logout" id="logout-redirect">LOGOUT</a></li>
                     {{#if user_is_owner}}
-                        <li><a class="right" href="/post/update/{{post.id}}" id="update-post-redirect">UPDATE POST</a></li>
+                        <li><a href="/post/update/{{post.id}}" id="update-post-redirect">UPDATE POST</a></li>
                     {{/if}}
                 {{else}}
-                    <li><a class="right" href="/login" id="login-redirect">LOGIN</a></li>
-                    <li><a class="right" href="/signup" id="signup-redirect">SIGNUP</a></li>
+                    <li><a href="/login" id="login-redirect">LOGIN</a></li>
+                    <li><a href="/signup" id="signup-redirect">SIGNUP</a></li>
                 {{/if}}
             </ul>
+            <ul id="nav-mobile" class="sidenav sec_text_color">
+                <li><a href="/">DASHBOARD</a></li>
+                {{#if logged_in}}
+                    <li><a href="/logout" id="logout-redirect">LOGOUT</a></li>
+                    {{#if user_is_owner}}
+                        <li><a href="/post/update/{{post.id}}" id="update-post-redirect">UPDATE POST</a></li>
+                    {{/if}}
+                {{else}}
+                    <li><a href="/login" id="login-redirect">LOGIN</a></li>
+                    <li><a href="/signup" id="signup-redirect">SIGNUP</a></li>
+                {{/if}}
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
         </div>
   </nav>
 </header>
@@ -34,7 +47,3 @@
             {{> comment-detail}}
         {{/each}}
 </main>
-
-{{#if logged_in}}
-    <script src="/js/logout.js"></script>
-  {{/if}}
