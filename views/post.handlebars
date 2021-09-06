@@ -1,7 +1,13 @@
 <header>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo left">{{uppercase post.title}}</a>
+            <a href="#" class="brand-logo left">{{uppercase post.title}} BY 
+                {{#if user_is_owner}}
+                    YOU
+                {{else}}
+                    {{uppercase post.owner.username}}
+                {{/if}}
+                </a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="right" href="/">DASHBOARD</a></li>
                 {{#if logged_in}}
@@ -36,11 +42,13 @@
     <br>
         
         {{#with post}}
-            {{> post-details-content}}
+            {{> post-detail-full}}
         {{/with}}
         <div class="container center-align">
             {{#unless user_is_owner}}
                 <a class="btn" href="/post/{{post.id}}/comment/">ADD COMMENT</a>
+            {{else}}
+                <p class="grey lighten-2" href="#">COMMENTS ON YOUR POST</p>
             {{/unless}}
         </div>
         <br>
